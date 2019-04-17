@@ -1,68 +1,82 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>地图</title>
-    <link href="./css/ol.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" href="./res/earth.ico" type="image/x-icon" /> 
-    <link rel="shortcut icon" href="./res/earth.ico" type="image/x-icon"/>
+    <link href="./css/ol.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="./res/earth.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./res/earth.ico" type="image/x-icon" />
     <script src="./build/ol-debug.js" type="text/javascript"></script>
     <!--  引入第三方插件库 -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <style type="text/css">
-        body,html,div,ul,li,iframe,p,img{
-            border:none;padding:0;margin:0;
+        body,
+        html,
+        div,
+        ul,
+        li,
+        iframe,
+        p,
+        img {
+            border: none;
+            padding: 0;
+            margin: 0;
         }
-        #map{
+
+        #map {
             widows: 50%;
-            width:260px;
-            height:260px;
+            width: 260px;
+            height: 260px;
         }
-        #map2{
+
+        #map2 {
             widows: 40%;
-            height:260px;
+            height: 260px;
         }
 
 
-        #menu{
-            width:100%;
-            height:20px;         
-            padding:5px 10px;
-            font-size:14px;
-            font-family:"微软雅黑";
-            left:10px;    
+        #menu {
+            width: 100%;
+            height: 20px;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-family: "微软雅黑";
+            left: 10px;
         }
     </style>
 </head>
+
 <body>
     <!-- 这里有问题 -->
     <div id="map" style="width: 100%;"></div>
     <div id="map2" style="width: 100%"></div>
-        <input type="button" onClick="moveToLeft();" value="左移" />
-        <input type="button" onClick="moveToRight();" value="右移" />
-        <input type="button" onClick="moveToUp();" value="上移" />
-        <input type="button" onClick="moveToDown();" value="下移" />
-        <input type="button" onClick="moveToCUG();" value="移到地大" />
-        <input type="button" onClick="zoomIn();" value="放大" />
-        <input type="button" onClick="zoomOut();" value="缩小" />
-        <input type="button" onClick="moveToLeft();"  value="红点" />
-        <input type="button" onClick="moveToRight();" value="绿点" />
-        <input type="button" onClick="moveToUp();" value="蓝点" />
-        <div id="menu">
-            <label>几何图形类型：&nbsp;</label>
-            <select id="type">
-              <option value="None">无</option>
-              <option value="Point">点</option>
-              <option value="LineString">线</option>
-              <option value="Polygon">多边形</option>
-              <option value="Circle">圆</option>
-              <option value="Square">正方形</option>
-              <option value="Box">长方形</option>
-            </select>
-      </div> 
-<!-- <div id="map" style="width: 100%;"></div> -->
-        <input type="radio" checked="checked" name="mapSource" onclick="switch2OSM();" />OpenStreetMap地图
-        <input type="radio" name="mapSource" onclick="switch2BingMap();" />Bing地图
-        <input type="radio" name="mapSource" onclick="switch2StamenMap();" />Stamen地图
+    <input type="button" onClick="moveToLeft();" value="左移" />
+    <input type="button" onClick="moveToRight();" value="右移" />
+    <input type="button" onClick="moveToUp();" value="上移" />
+    <input type="button" onClick="moveToDown();" value="下移" />
+    <input type="button" onClick="moveToCUG();" value="移到地大" />
+    <input type="button" onClick="zoomIn();" value="放大" />
+    <input type="button" onClick="zoomOut();" value="缩小" />
+    <input type="button" onClick="moveToLeft();" value="红点" />
+    <input type="button" onClick="moveToRight();" value="绿点" />
+    <input type="button" onClick="moveToUp();" value="蓝点" />
+    <input type="button" onClick="swapMap();" value="调换地图" />
+    <div id="menu">
+        <label>几何图形类型：&nbsp;</label>
+        <select id="type">
+            <option value="None">无</option>
+            <option value="Point">点</option>
+            <option value="LineString">线</option>
+            <option value="Polygon">多边形</option>
+            <option value="Circle">圆</option>
+            <option value="Square">正方形</option>
+            <option value="Box">长方形</option>
+        </select>
+    </div>
+    <!-- <div id="map" style="width: 100%;"></div> -->
+    <input type="radio" checked="checked" name="mapSource" onclick="switch2OSM();" />OpenStreetMap地图
+    <input type="radio" name="mapSource" onclick="switch2BingMap();" />Bing地图
+    <input type="radio" name="mapSource" onclick="switch2StamenMap();" />Stamen地图
     <script>
         //有关绘制
         var typeSelect = document.getElementById('type');//绘制类型对象
@@ -74,9 +88,9 @@
         });
         // Bing地图层
         var bingMapLayer = new ol.layer.Tile({
-        source: new ol.source.BingMaps({
-            key: 'AkjzA7OhS4MIBjutL21bkAop7dc41HSE0CNTR5c6HJy8JKc7U9U9RveWJrylD3XJ',
-            imagerySet: 'Road'
+            source: new ol.source.BingMaps({
+                key: 'AkjzA7OhS4MIBjutL21bkAop7dc41HSE0CNTR5c6HJy8JKc7U9U9RveWJrylD3XJ',
+                imagerySet: 'Road'
             })
         });
         // Stamen地图层
@@ -84,8 +98,14 @@
             source: new ol.source.Stamen({
                 layer: 'watercolor'
             })
-         });
-      var map = new ol.Map({
+        });
+        //视图
+        var view = new ol.View({
+            // 设置地大为地图中心，此处进行坐标转换， 把EPSG:4326的坐标，转换为EPSG:3857坐标，因为ol默认使用的是EPSG:3857坐标
+            center: ol.proj.transform([114.40, 30.52], 'EPSG:4326', 'EPSG:3857'),
+            zoom: 13
+        });
+        var map = new ol.Map({
             //地图控件
             controls: ol.control.defaults({
                 attributionOptions: ({
@@ -103,35 +123,21 @@
             ]),
 
             //设置logo
-            logo: {src: './img/icon_binggan.png', href: 'https://github.com/wsqstar'},    // 点击能跳转到对应页面
+            logo: { src: './img/icon_binggan.png', href: 'https://github.com/wsqstar' },    // 点击能跳转到对应页面
             //图层
             layers: [
-                new ol.layer.Tile({source: new ol.source.OSM()})
+                new ol.layer.Tile({ source: new ol.source.OSM() })
             ],
-            //视图
-            view: new ol.View({
-                // 设置地大为地图中心，此处进行坐标转换， 把EPSG:4326的坐标，转换为EPSG:3857坐标，因为ol默认使用的是EPSG:3857坐标
-                center: ol.proj.transform([114.40,30.52], 'EPSG:4326', 'EPSG:3857'),
-                zoom: 13
-            }),
+
+            view: view,
             target: 'map'
-      });
+        });
 
-      // 创建第二个地图
-    new ol.Map({
-        layers: [
-            new ol.layer.Tile({source: new ol.source.OSM()})
-        ],
-        view: new ol.View({
-            center: [0, 0],
-            zoom: 2
-        }),
-        target: 'map2'
-  });
 
-      //全新绘图功能
-      //实例化一个矢量图层Vector作为绘制层
-      var source = new ol.source.Vector({ wrapX: false });
+
+        //全新绘图功能
+        //实例化一个矢量图层Vector作为绘制层
+        var source = new ol.source.Vector({ wrapX: false });
         var vector = new ol.layer.Vector({
             source: source,
             style: new ol.style.Style({
@@ -174,7 +180,7 @@
                         var start = coordinates[0];
                         var end = coordinates[1];
                         geometry.setCoordinates([
-                          [start, [start[0], end[1]], end, [end[0], start[1]], start]
+                            [start, [start[0], end[1]], end, [end[0], start[1]], start]
                         ]);
                         return geometry;
                     };
@@ -203,39 +209,39 @@
             addInteraction();//添加交互绘制功能控件
         };
         addInteraction(); //添加交互绘制功能控件
-        
-// // 有关绘制的功能
-//         // 添加一个绘制的线使用的layer
-//         var lineLayer = new ol.layer.Vector({
-//             source: new ol.source.Vector(),
-//             style: new ol.style.Style({
-//                 stroke: new ol.style.Stroke({
-//                     color: 'red',
-//                     size: 500
-//                 })
-//             })
-//         })
-//         //添加了一个layer
-//         map.addLayer(lineLayer);
-//         var lineDraw = new ol.interaction.Draw({
-//             type: 'LineString',
-//             source: lineLayer.getSource(),    // 注意设置source，这样绘制好的线，就会添加到这个source里
-//             style: new ol.style.Style({            // 设置绘制时的样式
-//                 stroke: new ol.style.Stroke({
-//                     color: '#009933',
-//                     size: 500
-//                 })
-//             }),
-//             //maxPoints: 5    // 限制不超过5个点
-//         });
 
-//         // 监听线绘制结束事件，获取坐标
-//         lineDraw.on('drawend', function(event){
-//             // event.feature 就是当前绘制完成的线的Feature
-//             document.getElementById('points').innerHTML = JSON.stringify(event.feature.getGeometry().getCoordinates());
-//         });
+        // // 有关绘制的功能
+        //         // 添加一个绘制的线使用的layer
+        //         var lineLayer = new ol.layer.Vector({
+        //             source: new ol.source.Vector(),
+        //             style: new ol.style.Style({
+        //                 stroke: new ol.style.Stroke({
+        //                     color: 'red',
+        //                     size: 500
+        //                 })
+        //             })
+        //         })
+        //         //添加了一个layer
+        //         map.addLayer(lineLayer);
+        //         var lineDraw = new ol.interaction.Draw({
+        //             type: 'LineString',
+        //             source: lineLayer.getSource(),    // 注意设置source，这样绘制好的线，就会添加到这个source里
+        //             style: new ol.style.Style({            // 设置绘制时的样式
+        //                 stroke: new ol.style.Stroke({
+        //                     color: '#009933',
+        //                     size: 500
+        //                 })
+        //             }),
+        //             //maxPoints: 5    // 限制不超过5个点
+        //         });
 
-//         map.addInteraction(lineDraw);
+        //         // 监听线绘制结束事件，获取坐标
+        //         lineDraw.on('drawend', function(event){
+        //             // event.feature 就是当前绘制完成的线的Feature
+        //             document.getElementById('points').innerHTML = JSON.stringify(event.feature.getGeometry().getCoordinates());
+        //         });
+
+        //         map.addInteraction(lineDraw);
 
 
 
@@ -283,7 +289,7 @@
         function moveToCUG() {
             var view = map.getView();
             // 设置地图中心为地大的坐标，即可让地图移动到地大
-            view.setCenter(ol.proj.transform([114.40,30.52], 'EPSG:4326', 'EPSG:3857'));
+            view.setCenter(ol.proj.transform([114.40, 30.52], 'EPSG:4326', 'EPSG:3857'));
             map.render();
         }
 
@@ -301,22 +307,34 @@
             view.setZoom(view.getZoom() - 1);
         }
         function switch2OSM() {
-      // 先移除当前的地图，再添加Open Street Map 地图
-      map.removeLayer(map.getLayers().item(0));
-      map.addLayer(openStreetMapLayer);
-  }
-  function switch2BingMap() {
-      // 先移除当前的地图，再添加Bing地图
-      map.removeLayer(map.getLayers().item(0));
-      map.addLayer(bingMapLayer);
-  }
-  function switch2StamenMap() {
-      // 先移除当前的地图，再添加stamen地图
-      map.removeLayer(map.getLayers().item(0));
-      map.addLayer(stamenLayer);
-  }
-
-
+            // 先移除当前的地图，再添加Open Street Map 地图
+            map.removeLayer(map.getLayers().item(0));
+            map.addLayer(openStreetMapLayer);
+        }
+        function switch2BingMap() {
+            // 先移除当前的地图，再添加Bing地图
+            map.removeLayer(map.getLayers().item(0));
+            map.addLayer(bingMapLayer);
+        }
+        function switch2StamenMap() {
+            // 先移除当前的地图，再添加stamen地图
+            map.removeLayer(map.getLayers().item(0));
+            map.addLayer(stamenLayer);
+        }
+        // 创建第二个地图
+        new ol.Map({
+            layers: [
+                new ol.layer.Tile({ source: new ol.source.OSM() })
+            ],
+            view: view,
+            target: 'map2'
+        });
+        function swapMap() {
+            // 改变两个地图的容器
+            map1.setTarget('map2');
+            map2.setTarget('map1');
+        }
     </script>
 </body>
+
 </html>

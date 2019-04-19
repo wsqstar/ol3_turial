@@ -50,6 +50,7 @@
     <!-- 这里有问题 -->
     <div id="map" style="width: 100%;"></div>
     <div id="map2" style="width: 100%"></div>
+    <!-- 一行功能框 -->
     <input type="button" onClick="moveToLeft();" value="左移" />
     <input type="button" onClick="moveToRight();" value="右移" />
     <input type="button" onClick="moveToUp();" value="上移" />
@@ -61,6 +62,7 @@
     <input type="button" onClick="moveToRight();" value="绿点" />
     <input type="button" onClick="moveToUp();" value="蓝点" />
     <input type="button" onClick="swapMap();" value="调换地图" />
+    <!-- 下拉选项框 -->
     <div id="menu">
         <label>几何图形类型：&nbsp;</label>
         <select id="type">
@@ -74,9 +76,11 @@
         </select>
     </div>
     <!-- <div id="map" style="width: 100%;"></div> -->
+    <!-- 切换地图来源 -->
     <input type="radio" checked="checked" name="mapSource" onclick="switch2OSM();" />OpenStreetMap地图
     <input type="radio" name="mapSource" onclick="switch2BingMap();" />Bing地图
     <input type="radio" name="mapSource" onclick="switch2StamenMap();" />Stamen地图
+    <div><span>当前层级：</span><span id="zoom"></span><span>分辨率：</span><span id="resolution"></span></div>
     <script>
         //有关绘制
         var typeSelect = document.getElementById('type');//绘制类型对象
@@ -127,13 +131,19 @@
             //图层
             layers: [
                 new ol.layer.Tile({ source: new ol.source.OSM() })
+                //不知道为啥没有显示？
+                // // 添加一个显示Open Street Map地图瓦片网格的图层
+                // new ol.layer.Tile({
+                //     source: new ol.source.TileDebug({
+                //     projection: 'EPSG:3857',
+                //     tileGrid: osmSource.getTileGrid()
+                //     })
+                // })
             ],
 
             view: view,
             target: 'map'
         });
-
-
 
         //全新绘图功能
         //实例化一个矢量图层Vector作为绘制层
@@ -334,6 +344,15 @@
             map1.setTarget('map2');
             map2.setTarget('map1');
         }
+
+        // 监听层级变化，输出当前层级和分辨率
+        map.getView().on('change:resolution', function(){
+            document.getElementById('zoom').innerHTML =  this.getZoom() + '，';
+            document.getElementById('resolution').innerHTML = this.getResolution();
+        })
+
+        document.getElementById('zoom').innerHTML = map.getView().getZoom() + '，';
+        document.getElementById('resolution').innerHTML = + map.getView().getResolution();
     </script>
 </body>
 

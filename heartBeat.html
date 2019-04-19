@@ -1,0 +1,80 @@
+<!Doctype html>
+<html xmlns=http://www.w3.org/1999/xhtml>
+<body>
+
+    <head>
+        <!--定义动画，图标先放大，再缩小-->
+        <style type="text/css">
+          @keyframes zoom
+          {
+            from {top: 0; left: 0; width: 32px; height: 32px;}
+            50% {top: -16px; left: -16px; width: 64px; height: 64px;}
+            to {top: 0; left: 0; width: 32px; height: 32px;}
+          }
+    
+          @-moz-keyframes zoom /* Firefox */
+          {
+            from {top: 0; left: 0; width: 32px; height: 32px;}
+            50% {top: -16px; left: -16px; width: 64px; height: 64px;}
+            to {top: 0; left: 0; width: 32px; height: 32px;}
+          }
+    
+          @-webkit-keyframes zoom /* Safari 和 Chrome */
+          {
+            from {top: 0; left: 0; width: 32px; height: 32px;}
+            50% {top: -16px; left: -16px; width: 64px; height: 64px;}
+            to {top: 0; left: 0; width: 32px; height: 32px;}
+          }
+    
+          @-o-keyframes zoom /* Opera */
+          {
+            from {top: 0; left: 0; width: 32px; height: 32px;}
+            50% {top: -16px; left: -16px; width: 64px; height: 64px;}
+            to {top: 0; left: 0; width: 32px; height: 32px;}
+          }
+    
+          /* 应用css动画到图标元素上 */
+          #anchorImg
+          {
+            display: block;
+            position: absolute;
+            animation: zoom 5s;
+            animation-iteration-count: infinite; /* 一直重复动画 */
+            -moz-animation: zoom 5s; /* Firefox */
+            -moz-animation-iteration-count: infinite; /* 一直重复动画 */
+            -webkit-animation: zoom 5s;  /* Safari 和 Chrome */
+            -webkit-animation-iteration-count: infinite; /* 一直重复动画 */
+            -o-animation: zoom 5s; /* Opera */
+            -o-animation-iteration-count: infinite; /* 一直重复动画 */
+          }
+        </style>
+    </head>
+    
+    <div id="map" style="width: 100%"></div>
+    <div id="anchor" style="width: 64px;height: 64px;" ><img id='anchorImg' src="img\icon_binggan.png" alt="示例锚点"/></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'map',
+        view: new ol.View({
+          projection: 'EPSG:4326',
+          center: [104, 30],
+          zoom: 10
+        })
+      });
+    
+      var anchor = new ol.Overlay({
+        element: document.getElementById('anchor')
+      });
+      anchor.setPosition([104, 30]);
+      map.addOverlay(anchor);
+    </script>
+
+</body>
+
+</html>
+

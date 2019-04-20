@@ -49,7 +49,7 @@
 <body>
     <!-- 这里有问题 -->
     <div id="map" style="width: 100%;"></div>
-    <div id="map2" style="width: 100%"></div>
+    
     <!-- 一行功能框 -->
     <input type="button" onClick="moveToLeft();" value="左移" />
     <input type="button" onClick="moveToRight();" value="右移" />
@@ -81,6 +81,7 @@
     <input type="radio" name="mapSource" onclick="switch2BingMap();" />Bing地图
     <input type="radio" name="mapSource" onclick="switch2StamenMap();" />Stamen地图
     <div><span>当前层级：</span><span id="zoom"></span><span>分辨率：</span><span id="resolution"></span></div>
+    <div id="map2" style="width: 100%"></div>
     <script>
         //有关绘制
         var typeSelect = document.getElementById('type');//绘制类型对象
@@ -316,6 +317,7 @@
             // 让地图的zoom减小1，从而实现地图缩小
             view.setZoom(view.getZoom() - 1);
         }
+        //切换地图类型
         function switch2OSM() {
             // 先移除当前的地图，再添加Open Street Map 地图
             map.removeLayer(map.getLayers().item(0));

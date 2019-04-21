@@ -55,3 +55,19 @@ https://blog.csdn.net/wo_buzhidao/article/details/79268902 这个权当介绍出
 https://blog.csdn.net/u013420816/article/details/54629158  这个在实际上解决了问题
 
 
+
+## 重点 使用步骤
+
+- 首先打开tomcat（使用cmd开启）
+    - cd 到相应的位置（bin）C:\Dev\apache-tomcat-9.0.19\bin 
+    - startup.bat
+- 然后打开网页（http://localhost:8080/ol3/test/test.html）
+- 就可以愉快的操作了
+
+
+# 重点 搭建步骤
+- 数据源的搭建（注意权限设置）
+- 代码的搭建（一开始是直接复制粘贴的，但是后来看懂了）
+- 点击F12进行测试 
+  - 重点关注的 console （报错）
+  - 还有就是 查看network中的XHR

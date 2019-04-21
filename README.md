@@ -25,11 +25,28 @@
     - 但是现在好像没有前端没有连通服务器
         - 有以下两种情况
              - 根本没有发出去信息/信息有错误
+
+             - 目前发现的是：
+                 - 根本没有发出去信息——也就是说 我需要*审查代码*
+                    - 仔细查阅控制台 终于发现了这个的操作方法
+                >
+                    
+                    <ows:ExceptionText>{http://geoserver.org/nyc_roads}nyc_roads is read-only</ows:ExceptionText>
+
+                    readOnly 太恐怖了
+                >
+                  
                 - 也许与tomcat有关
                 - 也许与格式有关
              - geoserver坏掉了 ，需要检查报错
 
 ## 参考
 http://weilin.me/ol3-primer/ 
+
+http://weilin.me/ol3-primer/ch12/12-01-02.html
+
+https://blog.csdn.net/wo_buzhidao/article/details/79268902 这个权当介绍出错的概念
+
+https://blog.csdn.net/u013420816/article/details/54629158  这个在实际上解决了问题
 
 

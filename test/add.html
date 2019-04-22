@@ -10,14 +10,15 @@
 </head>
 
 <body>
+  <!-- 这里是操作的按钮 -->
   <input type="button" value="查询" onclick="queryWfs();" />
   <input id="add" type="checkbox" value="add" />新增
   <input id="saveNew" type="button" value="保存" onclick="onSaveNew();" />
-
+  <!-- 这里放置地图 -->
   <div id="map" style="width:100%;height:100%;"></div>
 
 
-
+  <!-- 这里实现基本操作 -->
   <script>
     var newId = 1;
     var wfsVectorLayer = null;

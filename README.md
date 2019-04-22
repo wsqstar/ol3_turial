@@ -1,4 +1,4 @@
-# ol3_turial
+# ol3_turial  WebGIS on OpenLayers3
 ## 简介
 这是一个使用OpenLayers3 API的教程/教学实例。本实例创建于2019年春。最新的基于ol5的教程将于2019年夏出版。
 
@@ -12,7 +12,7 @@
 - 更换地图源
 - 更换画笔类型（点、线、面、圆）
 - 显示当前层级、分辨率
-- 实现了不同页面下的增删改查
+- 实现了**不同页面**下的增删改查
     - 使用了GeoServer
     - 使用了jquery/zento
     - 使用了ol3
@@ -23,6 +23,7 @@
 - ~~地图间距（估计加载< p >就好了）~~
     - 其实我还想要一个地图的装裱框
         - CSS文件也不错 margin？
+        - 正在尝试使用antdesign
 - ~~在设计地图联动之后，就没有办法绘制了~~
     - 修改了位置之后 就可以了（把var map2 设置在 script的最后面）
 - 作业项目
@@ -41,14 +42,14 @@
                     readOnly 太恐怖了
                 >
                   
-                - 也许与tomcat有关
-                - 也许与格式有关
+                - 也许与tomcat有关（重要的是设置跨域）
+                - 也许与格式有关（其实这是最不容易坏掉的）
              - geoserver坏掉了 ，需要检查报错
 
 ## 参考
-http://weilin.me/ol3-primer/ 
+没有相关基础的可以直接看这个 http://weilin.me/ol3-primer/ 
 
-http://weilin.me/ol3-primer/ch12/12-01-02.html
+在test中的文件基本上完美复制了本教程 http://weilin.me/ol3-primer/ch12/12-01-02.html
 
 https://blog.csdn.net/wo_buzhidao/article/details/79268902 这个权当介绍出错的概念
 

@@ -4,7 +4,7 @@
 
 使用ol v3.20.1。
 
-![OpenLayers](img\openlayers.png)
+![OpenLayers](img/openlayers.png)
 ## ⏰当前进度
 ### ✔实现
 实现了一些关于地图控件的实现

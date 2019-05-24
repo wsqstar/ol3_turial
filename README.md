@@ -1,13 +1,13 @@
 # 🗺 ol3_turial  WebGIS on OpenLayers3
 ## 🙋‍简介 Introduction
-这是一个使用OpenLayers3 API的教程/教学实例。本实例创建于2019年春。最新的基于ol5的教程将于2019年夏出版，老师写的。
+这是一个使用OpenLayers3 API的教程/教学实例。本实例创建于2019年春。最新的基于ol5的教程将于2019年夏出版，老师👨‍🏫写的。
 
 使用ol v3.20.1。
 
 ![OpenLayers](img/openlayers.png)
 ## ⏰当前进度 Current Progress
 ### ✔实现 Achievements
-实现了一些关于地图控件的实现
+完成了一些关于地图控件的实现
 
 - 上下左右的使用
 - 更换地图源

@@ -2,6 +2,8 @@
 ## 🙋‍简介 Introduction
 这是一个使用OpenLayers3 API的教程/教学实例。本实例创建于2019年春。最新的基于ol5的教程将于2019年夏出版，老师👨‍🏫写的。
 
+其中OL3DEMO为路网操作系统，可以对道路网进行查询、增加、删除等处理，使用Tomcat、GeoServer以及JQuery。
+
 使用ol v3.20.1。
 
 ![OpenLayers](img/openlayers.png)
